@@ -1,2 +1,79 @@
-Editar solo el texto del index y index1 mas no los codigos, ya que pueden ser alterados, los programadores saben a lo que me refiero xd
-puedes cambiar la imagen q va dentro d la carta, y la musica tambien. subir a un repositorio toda la carpeta por si quieren enviar mediante link directo a esa persona :) 
+==============================================
+   🌻  FLORES AMARILLAS · GUÍA DE PERSONALIZACIÓN
+==============================================
+
+Hola. Con esta guía puedes dejar el regalo listo para
+esa persona especial en pocos minutos, sin programar.
+
+
+----------------------------------------------
+ 1. QUÉ SÍ PUEDES CAMBIAR
+----------------------------------------------
+
+  ✏️  Los textos
+      · index.html   → "Para", "De" y el mensaje de la carta.
+      · jardin.html  → la frase "Estas flores son para ti".
+
+  🖼️  La imagen de la carta
+      · Reemplaza assets/img/imagen-carta.png
+      · Usa un PNG con fondo transparente para que se vea
+        limpio dentro de la carta. Tamaño ideal: unos 400 px.
+
+  🎵  La música
+      · assets/audio/musica-carta.mp3   → suena en la carta.
+      · assets/audio/musica-jardin.mp3  → suena en el jardín.
+      · Reemplaza el archivo y conserva el mismo nombre.
+
+
+----------------------------------------------
+ 2. QUÉ NO DEBES TOCAR
+----------------------------------------------
+
+  Cambia SOLO el texto que se ve en pantalla, dentro de
+  index.html y jardin.html. No modifiques etiquetas,
+  clases, ni las carpetas assets/css y assets/js: ahí vive
+  el código y un cambio pequeño puede romper las
+  animaciones.
+
+  Los nombres de los archivos y las carpetas también deben
+  quedar igual, o las páginas no los encontrarán.
+
+
+----------------------------------------------
+ 3. CÓMO PROBARLO
+----------------------------------------------
+
+  1. Abre index.html en tu navegador.
+  2. Toca la carta para abrirla.
+  3. Pulsa "Ver tus flores" para ir al jardín.
+  4. Revisa desde el celular antes de enviarlo.
+
+  Si la música no suena sola, toca la pantalla: los
+  navegadores exigen una interacción antes de reproducir
+  audio.
+
+
+----------------------------------------------
+ 4. CÓMO ENVIARLO CON UN LINK
+----------------------------------------------
+
+  1. Sube toda la carpeta a un repositorio de GitHub.
+  2. Ve a Settings → Pages.
+  3. En Source elige "Deploy from a branch", rama main y
+     carpeta "/ (root)".
+  4. Espera un par de minutos y copia el enlace que
+     aparece ahí.
+  5. Envíaselo a esa persona. Se abre directo, sin
+     instalar nada. 💌
+
+
+----------------------------------------------
+ CONSEJOS
+----------------------------------------------
+
+  · Escribe un mensaje corto y sincero; es lo que más
+    se recuerda.
+  · Elige una canción que signifique algo para ustedes.
+  · Ábrelo tú primero, en celular y en computador.
+
+Hecho con ❤️ por Rodrigo Salva
