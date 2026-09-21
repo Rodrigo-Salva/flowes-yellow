@@ -10,7 +10,8 @@
 ![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-222?style=flat&logo=github)
 ![Responsive](https://img.shields.io/badge/Responsive-sí-success?style=flat)
 
-<img width="800" alt="Vista previa del jardín de flores" src="assets/img/vista-previa.png" />
+<img width="420" alt="Carta cerrada" src="assets/img/vista-carta-cerrada.png" />
+<img width="420" alt="Carta abierta" src="assets/img/vista-carta-abierta.png" />
 
 </div>
 
@@ -68,7 +69,8 @@ Flores_Amarillas/
 │   │   └── musica-jardin.mp3
 │   └── img/
 │       ├── imagen-carta.png    # Imagen dentro de la carta (PNG transparente)
-│       └── vista-previa.png    # Captura usada en este README
+│       ├── vista-carta-cerrada.png   # Capturas usadas en este README
+│       └── vista-carta-abierta.png
 ├── docs/
 │   └── personalizacion.txt     # Notas rápidas de personalización
 ├── .vscode/launch.json         # Depuración en Chrome
