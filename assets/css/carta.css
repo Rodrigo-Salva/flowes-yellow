@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Quicksand", sans-serif;
   background:
@@ -20,7 +24,6 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 1rem;
-  margin-top: 50px;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
 }
@@ -51,7 +54,7 @@ body {
   --letter-delay-hover: calc(var(--duration) * 1.25);
 
   --letter-height: calc(var(--envelope-height) - 2rem);
-  --letter-height-hover: calc(var(--envelope-height) * 1.75);
+  --letter-height-hover: min(calc(var(--envelope-height) * 1.75), calc(50dvh + var(--envelope-height) / 2 - 24px));
 
   --fold-rotate: rotateX(0deg);
   --fold-zindex-hover: 0;
@@ -165,13 +168,37 @@ body {
   position: absolute;
   inset: 0;
   z-index: 3;
-  background-image: conic-gradient(
-    transparent 60deg,
-    var(--envelope-clr-bg-side) 60deg 120deg,
-    var(--envelope-clr-bg-bottom) 120deg 240deg,
-    var(--envelope-clr-bg-side) 240deg 300deg,
-    transparent 300deg
-  );
+  background-color: var(--envelope-clr-bg-bottom);
+  clip-path: polygon(0% 100%, 50% 50%, 100% 100%);
+}
+
+.envelope-back .side-fold {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background-color: var(--envelope-clr-bg-side);
+  transition: var(--duration) ease-in-out;
+  transition-delay: var(--fold-delay);
+}
+
+.envelope-back .side-fold--left {
+  clip-path: polygon(0% 0%, 50% 50%, 0% 100%);
+  transform-origin: left center;
+  transform: rotateY(0deg);
+}
+
+.envelope-back .side-fold--right {
+  clip-path: polygon(100% 0%, 50% 50%, 100% 100%);
+  transform-origin: right center;
+  transform: rotateY(0deg);
+}
+
+.envelope.open .side-fold--left {
+  transform: rotateY(-180deg);
+}
+
+.envelope.open .side-fold--right {
+  transform: rotateY(180deg);
 }
 .envelope-back .top-fold {
   position: absolute;
@@ -203,12 +230,27 @@ body {
   text-align: center;
   transition: var(--duration) ease-in-out;
   transition-delay: var(--letter-delay);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(185, 19, 0, 0.4) transparent;
 }
+
+.letter > * {
+  flex-shrink: 0;
+}
+
+.envelope.open .letter {
+  z-index: 4;
+}
+
 .letter p {
   margin: 0;
-  font-weight: bold;
-  width: 32ch;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  width: 100%;
+  max-width: 46ch;
   color: var(--letter-clr-text);
 }
 
@@ -444,18 +486,13 @@ body {
     min-height: 100dvh;
   }
 
-  .envelope {
-    --letter-height-hover: calc(var(--envelope-height) * 2.1);
-  }
-
   .letter {
-    padding: 0.8em 0.6em;
-    gap: 0.4rem;
+    padding: 0.8em 0.8em 1.2em;
+    gap: 0.8rem;
   }
 
   .letter p {
-    width: auto;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .custom-image {
@@ -480,9 +517,28 @@ body {
 
 @media (max-height: 520px) and (orientation: landscape) {
   .envelope {
-    --envelope-width: 260px;
-    --envelope-height: 150px;
-    --letter-height-hover: calc(var(--envelope-height) * 1.9);
+    --envelope-width: min(560px, 80vw);
+    --envelope-height: 130px;
+  }
+
+  .hint {
+    margin-bottom: 14px;
+    font-size: 1rem;
+  }
+
+  .letter {
+    padding: 0.6em 1.2em;
+    gap: 0.5rem;
+  }
+
+  .custom-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .custom-image2 {
+    width: 70px;
+    height: 70px;
   }
 }
 
@@ -506,4 +562,17 @@ body {
 @keyframes hint-pulse {
   0%, 100% { transform: scale(1); opacity: 0.85; }
   50% { transform: scale(1.06); opacity: 1; }
+}
+
+.envelope.closing {
+  animation: envelope-hop 0.9s ease-out;
+}
+
+@keyframes envelope-hop {
+  0% { transform: translateY(0) scale(1, 1); }
+  20% { transform: translateY(0) scale(1.04, 0.94); }
+  45% { transform: translateY(-34px) scale(0.97, 1.05); }
+  70% { transform: translateY(0) scale(1.03, 0.96); }
+  85% { transform: translateY(-10px) scale(1, 1); }
+  100% { transform: translateY(0) scale(1, 1); }
 }
